@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<script type="text/javascript" charset="utf-8" src="phonegap.js" ></script>
+	</head>
+	<body>
+		<script type="text/javascript">
+
+			function MyCustomObject() {
+				this.callObjectiveC = function callObjectiveC() {
+					PhoneGap.exec('MyCustomObj.calledFromJavascript', 'MyCustomObject', 'i was called from javascript', {'cancelButton':'Okay'});
+				}
+			}
+			
+			PhoneGap.addConstructor(function() {
+				window.mycustom = new MyCustomObject();
+			});
+
+			
+			function calledFromObjectiveC() {
+				alert('i was called from objective-c');
+				return 'jeevers';
+			}
+			
+		</script>
+		<button style="height:100%;width:100%;" onclick="mycustom.callObjectiveC();">click me to call objective-c</button>
+	</body>
+</html>
