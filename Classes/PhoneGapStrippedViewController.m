@@ -55,10 +55,10 @@
 	
 	
 	// create wrapper and pass in webview
-	[[PhoneGapWrapper alloc] initWithWebView:w];
+	PhoneGapWrapper *wr = [[PhoneGapWrapper alloc] initWithWebView:w];
 	
 	// create mycustomobj.. only necessary for calling javascript
-	MyCustomObj *mc = [[MyCustomObj alloc] initWithWebView:w];
+	MyCustomObj *mc = [wr getCommandInstance:@"MyCustomObj"];
 	[b addTarget:mc action:@selector(callJavascript) forControlEvents:UIControlEventTouchDown];
 
 
